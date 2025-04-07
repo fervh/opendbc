@@ -6,7 +6,6 @@ Ecu = CarParams.Ecu
 # The existence of SCC or RDR in the fwdRadar FW usually determines the radar's function,
 # i.e. if it sends the SCC messages or if another ECU like the camera or ADAS Driving ECU does
 
-
 FW_VERSIONS = {
   CAR.HYUNDAI_AZERA_6TH_GEN: {
     (Ecu.fwdRadar, 0x7d0, None): [
@@ -81,6 +80,7 @@ FW_VERSIONS = {
       b'\xf1\x00AEhe SCC F-CUP      1.00 1.02 99110-G2100         ',
       b'\xf1\x00AEhe SCC FHCUP      1.00 1.00 99110-G2600         ',
       b'\xf1\x00AEhe SCC FHCUP      1.00 1.02 99110-G2100         ',
+      b'\xf1\x00AEhe SCC F-CUP 1.00 1.00 99110-G2500', #Arsany
     ],
     (Ecu.eps, 0x7d4, None): [
       b'\xf1\x00AE  MDPS C 1.00 1.01 56310/G2210 4APHC101',
@@ -88,14 +88,30 @@ FW_VERSIONS = {
       b'\xf1\x00AE  MDPS C 1.00 1.01 56310/G2510 4APHC101',
       b'\xf1\x00AE  MDPS C 1.00 1.01 56310/G2560 4APHC101',
       b'\xf1\x00AE  MDPS C 1.00 1.01 56310G2510\x00 4APHC101',
+      b'\xf1\x00AE  MDPS C 1.00 1.01 56310G2310\x00 4APHC101', #Arsany
     ],
     (Ecu.fwdCamera, 0x7c4, None): [
       b'\xf1\x00AEP MFC  AT EUR LHD 1.00 1.01 95740-G2600 190819',
       b'\xf1\x00AEP MFC  AT EUR RHD 1.00 1.01 95740-G2600 190819',
       b'\xf1\x00AEP MFC  AT USA LHD 1.00 1.00 95740-G2700 201027',
       b'\xf1\x00AEP MFC  AT USA LHD 1.00 1.01 95740-G2600 190819',
+      b'\xf1\x00AEP MFC  AT EUR LHD 1.00 1.00 95740-G2700 201027', #Arsany
     ],
   },
+#  CAR.HYUNDAI_IONIQ_PHEV_2022_Arsany: {   # Modify this line if your car is different
+#    (Ecu.eps, 0x7d4, None): [
+#      b'\xf1\x00AE  MDPS C 1.00 1.01 56310G2310\x00 4APHC101',
+#    ],
+#    (Ecu.fwdCamera, 0x7c4, None): [
+#      b'\xf1\x00AEP MFC  AT EUR LHD 1.00 1.00 95740-G2700 201027',
+#    ],
+#    (Ecu.fwdRadar, 0x7d0, None): [
+#      b'\xf1\x00AEhe SCC F-CUP 1.00 1.00 99110-G2500',
+#    ],
+#    (Ecu.hvac, 0x7b3, None): [
+#      b'\xf1\x00AE PE 97250-G2BK0CONTROL ASSY-DATC 1.05AE PE DATC(-)0.7',
+#    ],
+#  },
   CAR.HYUNDAI_IONIQ_EV_2020: {
     (Ecu.fwdRadar, 0x7d0, None): [
       b'\xf1\x00AEev SCC F-CUP      1.00 1.00 99110-G7200         ',
