@@ -295,6 +295,25 @@ struct CarState {
   canMonoTimesDEPRECATED @12: List(UInt64);
   canRcvTimeoutDEPRECATED @49 :Bool;
   eventsDEPRECATED @13 :List(OnroadEventDEPRECATED);
+
+  # New feedback (fervh)
+
+  lightInfo @58 :LightInfo;
+  wiperInfo @59 :WiperInfo;
+
+  struct LightInfo {
+    lightState @0 :Int32;
+    lowLight @1 :Bool;
+    highLight @2 :Bool;
+    hazardLight @3 :Bool;
+  }
+
+  struct WiperInfo {
+    wiperInt @0 :Int32;
+    wiperLow @1 :Bool;
+    wiperHigh @2 :Bool;
+    wiperAuto @3 :Bool;
+  }
 }
 
 # ******* radar state @ 20hz *******

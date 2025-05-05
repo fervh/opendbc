@@ -109,6 +109,19 @@ class CarState(CarStateBase):
     ret.steeringPressed = self.update_steering_pressed(abs(ret.steeringTorque) > self.params.STEER_THRESHOLD, 5)
     ret.steerFaultTemporary = cp.vl["MDPS12"]["CF_Mdps_ToiUnavail"] != 0 or cp.vl["MDPS12"]["CF_Mdps_ToiFlt"] != 0
 
+    # New feedback (fervh)
+    # LightInfo
+    ret.lightInfo.lightState = cp.vl["CGW1"]["CF_Gway_LightSwState"]
+    ret.lightInfo.lowLight = cp.vl["CGW1"]["CF_Gway_HeadLampLow"] == 1
+    ret.lightInfo.highLight = cp.vl["CGW1"]["CF_Gway_HeadLampHigh"] == 1
+    ret.lightInfo.hazardLight = cp.vl["CGW1"]["CF_Gway_HazardSw"] == 1
+
+    # Wiper Info
+    ret.wiperInfo.wiperInt = cp.vl["CGW1"]["CF_Gway_WiperIntT"]
+    ret.wiperInfo.wiperLow = cp.vl["CGW1"]["CF_Gway_WiperLowSw"] == 1
+    ret.wiperInfo.wiperHigh = cp.vl["CGW1"]["CF_Gway_WiperHighSw"] == 1
+    ret.wiperInfo.wiperAuto = cp.vl["CGW1"]["CF_Gway_WiperAutoSw"] == 1
+
     # cruise state
     if self.CP.openpilotLongitudinalControl:
       # These are not used for engage/disengage since openpilot keeps track of state using the buttons
